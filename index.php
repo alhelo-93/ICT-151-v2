@@ -10,17 +10,25 @@
 require 'controler/controler.php';
 
 $action = '';
-if(isset($_GET['action'])){
-    $action=$_GET['action'];
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
 }
 
 
-    switch($action){
-        case 'grades':
-            getGradesPage();
+switch ($action) {
+    case 'grades':
+        getGradesPage();
         break;
+    case 'addgrade':
 
-        default:getHome();
+
+        $idStudent = $_POST['nameStudent'];
+        $idEval = $_POST['nameEval'];
+        $gradeValue = $_POST['nameGrade'];
+        callGrade($gradeValue,$idStudent,$idEval);
+        break;
+    default:
+        getHome();
 
 
-    }
+}

@@ -14,7 +14,16 @@ function getHome()
 }
 
 function getGradesPage()
-{
+{   $students = getStudents();
     $grades = getStudentSGrades();
+    $modules = getModules();
+    $evaluations = getEvaluations();
     require 'view/studentsgrades.php';
+}
+function callGrade($gradeValue, $idStudent, $idEval){
+    createNewGrade( [
+        "grade" => $gradeValue,
+        "student" => $idStudent,
+        "eval" => $idEval
+    ]);
 }
